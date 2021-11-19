@@ -32,8 +32,6 @@ contract MeterMaker is Ownable {
     address private immutable mtrg;
     //???
 
-    // V1 - V5: OK
-    mapping(address => address) internal _bridges;
 
     event LogMTRGBought(
         uint256 mtrAmountIn,
@@ -57,7 +55,7 @@ contract MeterMaker is Ownable {
     // C6: It's not a fool proof solution, but it prevents flash loans, so here it's ok to use tx.origin
     modifier onlyEOA() {
         // Try to make flash-loan exploit harder to do by only allowing externally owned addresses.
-        require(msg.sender == tx.origin, "SushiMaker: must use EOA");
+        require(msg.sender == tx.origin, "MeterMaker: must use EOA");
         _;
     }
 
@@ -69,8 +67,7 @@ contract MeterMaker is Ownable {
     // C1 - C24: OK
     function buybackMTRG() external onlyEOA() {
         uint256 mtrAmountIn = IERC20(mtr).balanceOf(address(this));
-        mtrAmountIn = mtrAmountIn.sub(3e17); // reserve 0.3 MTR for gas
-        if (mtrAmountIn <= 0){
+        if (mtrAmountIn > 0){
             uint256 mtrgAmountOut = _toMTRG(mtr, mtrAmountIn);
             emit LogMTRGBought(mtrAmountIn, mtrgAmountOut);
         }

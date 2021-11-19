@@ -56,16 +56,16 @@ const config: HardhatUserConfig = {
   },
   networks: {
     metermain:{
-      url: 'https://rpctest.meter.io',
-      accounts,
+      url: 'https://rpc.meter.io',
       gasPrice: 120*1000000000,
-      chainId: 83
+      chainId: 82,
+      accounts: [process.env.MAINNET_CONTRACT_ADMIN_PRIVKEY],
     },
     metertest: {
-      url: `https://rpc.meter.io`,
-      accounts,
+      url: `https://rpctest.meter.io`,
       gasPrice: 120 * 1000000000,
-      chainId: 82,
+      chainId: 83,
+      accounts: [process.env.TESTNET_CONTRACT_ADMIN_PRIVKEY],
     },
     localhost: {
       live: false,
