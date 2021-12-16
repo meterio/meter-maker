@@ -15,7 +15,7 @@ module.exports = async function ({ ethers: { getNamedSigner }, getNamedAccounts,
   if (chainId === '82') {
     // metermain
     factoryAddr = '0x56aD9A9149685b290ffeC883937caE191e193135';
-    vaultAddr = '0x1d18C6fcA6817175FfF59763A36aC03CA9755165';
+    vaultAddr = '0x0000000000000000000000000000000000000000';
     mtrAddr = '0x687a6294d0d6d63e751a059bf1ca68e4ae7b13e2';
     mtrgAddr = '0x228ebbee999c6a7ad74a6130e81b12f9fe237ba3';
   } else if (chainId === '83') {
