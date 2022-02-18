@@ -27,8 +27,12 @@ const enableAccount = (web3) => {
 const transferMTRToMeterMaker = async()=>{
   const web3 = loadWeb3();
   const ownerAddr = enableAccount(web3);
-  const balance = await web3.eth.getBalance(ownerAddr)
+  console.log('addresss: ', ownerAddr)
+  const balance = await web3.eth.getEnergy(ownerAddr)
+  // const balance = '200000000000000000000'
+  console.log("MTR BALANCE: ", balance)
   const mtrAmount = new BigNumber(balance).minus(reserve)
+  console.log("Buyback MTR balance:", balance)
   if (mtrAmount.isLessThan(minMTRToTransfer)){
     console.log("not enough MTR balance to start buyback")
     process.exit(-1)
