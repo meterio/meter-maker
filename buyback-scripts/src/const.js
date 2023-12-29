@@ -5,4 +5,5 @@ module.exports = {
   meterAddr: "0x687a6294d0d6d63e751a059bf1ca68e4ae7b13e2",
   reserve: 0.2e18,
   minMTRToTransfer: 0.1e18,
+  maxMTRToTransfer: 100e18,
 };
